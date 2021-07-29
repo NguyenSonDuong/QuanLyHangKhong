@@ -1,0 +1,56 @@
+﻿@model IEnumerable<QuanLyHangKhong.Models.DatVeModel>
+
+@{
+    ViewBag.Title = "Ve";
+}
+
+<h2>Danh Sách Vé </h2>
+
+<p>
+    @Html.ActionLink("Thêm Vé Mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaHD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaVe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaHoChieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sdt)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaHD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaVe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaHoChieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sdt)
+        </td>
+        <td>
+            @Html.ActionLink("Sửa", "Edit", new { maHoaDon = item.MaHD  }) |
+            @Html.ActionLink("Xóa", "Delete", new { maHoaDon = item.MaHD  })
+        </td>
+    </tr>
+}
+
+</table>

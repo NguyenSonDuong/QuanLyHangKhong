@@ -1,31 +1,75 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<QuanLyHangKhong.Models.ThongTinVeModel>
+
+@{
+    ViewBag.Title = "Ve";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<h2>Thông Tin Vé Máy Bay</h2>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+<p>
+    @Html.ActionLink("Thêm Thông Tin Vé", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaVe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiVe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaVe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThoiGianBay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaHang)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaVe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiVe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaVe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayDi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGianBay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHang)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { maVe = item.MaVe }) |
+                @Html.ActionLink("Xóa", "Delete", new { maVe=item.MaVe })
+            </td>
+        </tr>
+    }
+
+</table>
