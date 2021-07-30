@@ -7,91 +7,35 @@ namespace QuanLyHangKhong.Models
 {
     public class HangMayBayModel
     {
-        int maHang;
-        string tenHang;
-        string diaChi;
-        DateTime thoiGianThanhLap;
-        string email;
-
-        public HangMayBayModel(int maHang, string tenHang, string diaChi, DateTime thoiGianThanhLap, string email)
-        {
-            this.maHang = maHang;
-            this.tenHang = tenHang;
-            this.diaChi = diaChi;
-            this.thoiGianThanhLap = thoiGianThanhLap;
-            this.email = email;
-        }
+        private int maHang;
+        private string tenHang;
+        private string diaChi;
+        private DateTime thoiGianThanhLap;
+        private string email;
         public HangMayBayModel(string tenHang, string diaChi, DateTime thoiGianThanhLap, string email)
         {
-            this.tenHang = tenHang;
-            this.diaChi = diaChi;
-            this.thoiGianThanhLap = thoiGianThanhLap;
-            this.email = email;
+            this.TenHang = tenHang;
+            this.DiaChi = diaChi;
+            this.ThoiGianThanhLap = thoiGianThanhLap;
+            this.Email = email;
         }
-
-        public int MaHang
+        public HangMayBayModel()
         {
-            get
-            {
-                return maHang;
-            }
 
-            set
-            {
-                maHang = value;
-            }
         }
-
-        public string TenHang
+        public HangMayBayModel(int maHang, string tenHang, string diaChi, DateTime thoiGianThanhLap, string email)
         {
-            get
-            {
-                return tenHang;
-            }
-
-            set
-            {
-                tenHang = value;
-            }
+            this.MaHang = maHang;
+            this.TenHang = tenHang;
+            this.DiaChi = diaChi;
+            this.ThoiGianThanhLap = thoiGianThanhLap;
+            this.Email = email;
         }
 
-        public string DiaChi
-        {
-            get
-            {
-                return diaChi;
-            }
-
-            set
-            {
-                diaChi = value;
-            }
-        }
-
-        public DateTime ThoiGianThanhLap
-        {
-            get
-            {
-                return thoiGianThanhLap;
-            }
-
-            set
-            {
-                thoiGianThanhLap = value;
-            }
-        }
-
-        public string Email
-        {
-            get
-            {
-                return email;
-            }
-
-            set
-            {
-                email = value;
-            }
-        }
+        public int MaHang { get => maHang; set => maHang = value; }
+        public string TenHang { get => tenHang; set => tenHang = value; }
+        public string DiaChi { get => diaChi; set => diaChi = value; }
+        public DateTime ThoiGianThanhLap { get => thoiGianThanhLap; set => thoiGianThanhLap = value; }
+        public string Email { get => email; set => email = value; }
     }
 }

@@ -36,7 +36,7 @@ namespace QuanLyHangKhong.Controllers
         {
             try
             {
-                if (connect.insertHangMayBay(hangMB)==true)
+                if (connect.insertHangMayBay(hangMB) == true)
                 {
                     return RedirectToAction("Hang", "HangMayBay");
                 }
@@ -45,7 +45,7 @@ namespace QuanLyHangKhong.Controllers
                     return View();
                 }
 
-   
+
             }
             catch
             {
@@ -62,7 +62,7 @@ namespace QuanLyHangKhong.Controllers
 
         // POST: HangMayBay/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, HangMayBayModel hangMB)
+        public ActionResult Edit( HangMayBayModel hangMB)
         {
             try
             {
@@ -80,9 +80,16 @@ namespace QuanLyHangKhong.Controllers
         }
 
         // GET: HangMayBay/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(HangMayBayModel hangMayBayModel)
         {
-            return View();
+            if (connect.deleteHMB(hangMayBayModel.MaHang))
+            {
+                return RedirectToAction("Hang", "HangMayBay");
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         // POST: HangMayBay/Delete/5
@@ -91,9 +98,14 @@ namespace QuanLyHangKhong.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                if (connect.deleteHMB(id))
+                {
+                    return RedirectToAction("Hang","HangMayBayController");
+                }
+                else
+                {
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {

@@ -13,6 +13,11 @@ namespace QuanLyHangKhong.Models
         string maHoChieu;
         string sdt;
 
+        public DatVeModel()
+        {
+
+        }
+
         public DatVeModel(int maVe, string tenKH, string maHoChieu, string sdt)
         {
             this.maVe = maVe;

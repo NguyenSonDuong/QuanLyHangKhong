@@ -52,7 +52,7 @@ namespace QuanLyHangKhong.Controllers
                     return View();
                 }
 
-                
+
             }
             catch
             {
@@ -61,18 +61,24 @@ namespace QuanLyHangKhong.Controllers
         }
 
         // GET: ThongTinVe/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int maVe)
         {
-            return View();
+            ThongTinVeModel thongTinVeModel = connect.getthongtinve(maVe);
+            return View(thongTinVeModel);
         }
 
         // POST: ThongTinVe/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(ThongTinVeModel thongTinV)
         {
             try
             {
-                return RedirectToAction("Index");
+                if (connect.updateTTV(thongTinV))
+                {
+                    return RedirectToAction("Index");
+                }
+                ViewBag.mess = "Update không thành công";
+                return View();
             }
             catch
             {
@@ -85,7 +91,7 @@ namespace QuanLyHangKhong.Controllers
         {
             ThongTinVeModel tTin = connect.getthongtinve(maVe);
             return View(tTin);
-           
+
         }
 
         // POST: ThongTinVe/Delete/5

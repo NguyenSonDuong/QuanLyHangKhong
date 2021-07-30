@@ -13,7 +13,7 @@ namespace QuanLyHangKhong.DAL
         protected SqlConnection cnn;
         public void Connect()
         {
-            connectionString = @"Data Source=DESKTOP-ANUAD36\SQLEXPRESS;Initial Catalog=QuanLyHangKhong;Integrated Security=True";
+            connectionString = @"Data Source=DESKTOP-1IEEQJH\SQLEXPRESS;Initial Catalog=quanlyhangkhong;Integrated Security=True";
             cnn = new SqlConnection(connectionString);
             cnn.Open();
         }
@@ -74,9 +74,9 @@ namespace QuanLyHangKhong.DAL
         {
             Connect();
             string sql = $"UPDATE hangmaybay SET tenHang = '{hangMB.TenHang}', " +
-                $"dichi = '{ hangMB.DiaChi }', " +
+                $"diachi = '{ hangMB.DiaChi }', " +
                 $"thoigianthanhlap = '{hangMB.ThoiGianThanhLap}', " +
-                $"email = '{hangMB.Email}' " +
+                $"email = '{hangMB.Email.Trim()}' " +
                 $"WHERE maHang = '{hangMB.MaHang}'";
             SqlCommand cmm = new SqlCommand(sql, cnn);
             try
@@ -85,7 +85,7 @@ namespace QuanLyHangKhong.DAL
                 cnn.Close();
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }

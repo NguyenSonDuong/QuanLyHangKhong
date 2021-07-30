@@ -16,7 +16,10 @@ namespace QuanLyHangKhong.Models
         int thoiGianBay;
         int maHang;
 
+        public ThongTinVeModel()
+        {
 
+        }
         public ThongTinVeModel(string loaiVe, float giaVe, DateTime ngayDi, string noiDi, string noiDen, int thoiGianBay, int maHang)
         {
             this.loaiVe = loaiVe;
