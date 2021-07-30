@@ -10,9 +10,9 @@ namespace QuanLyHangKhong.Controllers
 {
     public class HomeController : Controller
     {
+        DALConnect connect = new DALConnect();
         public ActionResult Index()
         {
-            DALConnect connect = new DALConnect();
             var list = connect.getAllThongTinVe();
             return View(list);
         }
@@ -43,7 +43,6 @@ namespace QuanLyHangKhong.Controllers
         {
             try
             {
-                DALConnect connect = new DALConnect();
                 if (connect.insertTTV(ttVe))
                 {
                     return RedirectToAction("Index", "Home");
@@ -73,8 +72,6 @@ namespace QuanLyHangKhong.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -86,7 +83,6 @@ namespace QuanLyHangKhong.Controllers
         // GET: ThongTinVe/Delete/5
         public ActionResult Delete(int maVe)
         {
-            DALConnect connect = new DALConnect();
             ThongTinVeModel tTin = connect.getthongtinve(maVe);
             return View(tTin);
            
@@ -98,7 +94,6 @@ namespace QuanLyHangKhong.Controllers
         {
             try
             {
-                DALConnect connect = new DALConnect();
                 if (!connect.deleteThongTinVe(maVe))
                 {
                     ViewBag.mess = "Xóa không thành công";

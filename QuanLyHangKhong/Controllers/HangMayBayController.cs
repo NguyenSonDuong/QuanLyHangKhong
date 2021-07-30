@@ -10,10 +10,10 @@ namespace QuanLyHangKhong.Controllers
 {
     public class HangMayBayController : Controller
     {
+        DALConnect connect = new DALConnect();
         // GET: HangMayBay
         public ActionResult Hang()
         {
-            DALConnect connect = new DALConnect();
             var list = connect.getAllHangMB();
             return View(list);
         }
@@ -36,7 +36,6 @@ namespace QuanLyHangKhong.Controllers
         {
             try
             {
-                DALConnect connect = new DALConnect();
                 if (connect.insertHangMayBay(hangMB)==true)
                 {
                     return RedirectToAction("Hang", "HangMayBay");
@@ -57,7 +56,6 @@ namespace QuanLyHangKhong.Controllers
         // GET: HangMayBay/Edit/5
         public ActionResult Edit(int maHang)
         {
-            DALConnect connect = new DALConnect();
             HangMayBayModel mayBay = connect.GetHangMayBay(maHang);
             return View(mayBay);
         }
@@ -68,7 +66,6 @@ namespace QuanLyHangKhong.Controllers
         {
             try
             {
-                DALConnect connect = new DALConnect();
                 if (connect.updateHangMayBay(hangMB))
                 {
                     return RedirectToAction("Hang", "HangMayBay");

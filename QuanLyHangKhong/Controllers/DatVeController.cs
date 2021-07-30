@@ -10,10 +10,11 @@ namespace QuanLyHangKhong.Controllers
 {
     public class DatVeController : Controller
     {
+        DALConnect connect = new DALConnect();
         // GET: DatVe
         public ActionResult Ve()
         {
-            DALConnect connect = new DALConnect();
+            
             var list = connect.getAllDatVe();
             return View(list);
         }
@@ -36,7 +37,6 @@ namespace QuanLyHangKhong.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
             }
@@ -58,8 +58,7 @@ namespace QuanLyHangKhong.Controllers
         {
             try
             {
-                // TODO: Add update logic here
-
+                
                 return RedirectToAction("Index");
             }
             catch
