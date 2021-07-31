@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -34,7 +35,7 @@ namespace QuanLyHangKhong.Models
             this.maHoChieu = maHoChieu;
             this.sdt = sdt;
         }
-
+        [Display(Name = "Mã hóa đơn vé")]
         public int MaHD
         {
             get
@@ -48,6 +49,7 @@ namespace QuanLyHangKhong.Models
             }
         }
 
+        [Display(Name = "Mã vé")]
         public int MaVe
         {
             get
@@ -61,6 +63,7 @@ namespace QuanLyHangKhong.Models
             }
         }
 
+        [Display(Name = "Tên khách hàng")]
         public string TenKH
         {
             get
@@ -73,7 +76,7 @@ namespace QuanLyHangKhong.Models
                 tenKH = value;
             }
         }
-
+        [Display(Name = "Số hộ chiếu")]
         public string MaHoChieu
         {
             get
@@ -86,7 +89,7 @@ namespace QuanLyHangKhong.Models
                 maHoChieu = value;
             }
         }
-
+        [Display(Name = "Số điện thoại")]
         public string Sdt
         {
             get

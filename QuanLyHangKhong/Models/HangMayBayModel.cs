@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -31,11 +32,15 @@ namespace QuanLyHangKhong.Models
             this.ThoiGianThanhLap = thoiGianThanhLap;
             this.Email = email;
         }
-
+        [Display(Name = "Mã Hãng")]
         public int MaHang { get => maHang; set => maHang = value; }
+        [Display(Name = "Tên hãng")]
         public string TenHang { get => tenHang; set => tenHang = value; }
+        [Display(Name = "Địa chỉ hoạt động")]
         public string DiaChi { get => diaChi; set => diaChi = value; }
+        [Display(Name = "Thời gian thành lập")]
         public DateTime ThoiGianThanhLap { get => thoiGianThanhLap; set => thoiGianThanhLap = value; }
+        [Display(Name = "Email")]
         public string Email { get => email; set => email = value; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -43,7 +44,7 @@ namespace QuanLyHangKhong.Models
             this.thoiGianBay = thoiGianBay;
             this.maHang = maHang;
         }
-
+        [Display(Name = "Mã vé")]
         public int MaVe
         {
             get
@@ -56,7 +57,7 @@ namespace QuanLyHangKhong.Models
                 maVe = value;
             }
         }
-
+        [Display(Name = "Loại vé")]
         public string LoaiVe
         {
             get
@@ -69,7 +70,7 @@ namespace QuanLyHangKhong.Models
                 loaiVe = value;
             }
         }
-
+        [Display(Name = "Giá vé")]
         public float GiaVe
         {
             get
@@ -82,7 +83,7 @@ namespace QuanLyHangKhong.Models
                 giaVe = value;
             }
         }
-
+        [Display(Name = "Ngày đi")]
         public DateTime NgayDi
         {
             get
@@ -95,7 +96,7 @@ namespace QuanLyHangKhong.Models
                 ngayDi = value;
             }
         }
-
+        [Display(Name = "Nơi đi")]
         public string NoiDi
         {
             get
@@ -108,7 +109,7 @@ namespace QuanLyHangKhong.Models
                 noiDi = value;
             }
         }
-
+        [Display(Name = "Nơi đến")]
         public string NoiDen
         {
             get
@@ -121,7 +122,7 @@ namespace QuanLyHangKhong.Models
                 noiDen = value;
             }
         }
-
+        [Display(Name = "Thời gian bay (Tiếng)")]
         public int ThoiGianBay
         {
             get
@@ -134,7 +135,7 @@ namespace QuanLyHangKhong.Models
                 thoiGianBay = value;
             }
         }
-
+        [Display(Name = "Mã hãng máy bay")]
         public int MaHang
         {
             get
