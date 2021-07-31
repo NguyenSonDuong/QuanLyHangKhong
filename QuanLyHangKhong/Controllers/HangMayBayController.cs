@@ -80,32 +80,23 @@ namespace QuanLyHangKhong.Controllers
         }
 
         // GET: HangMayBay/Delete/5
-        public ActionResult Delete(HangMayBayModel hangMayBayModel)
+        public ActionResult Delete(int maHang)
         {
-            if (connect.deleteHMB(hangMayBayModel.MaHang))
-            {
-                return RedirectToAction("Hang", "HangMayBay");
-            }
-            else
-            {
-                return RedirectToAction("Index");
-            }
+            HangMayBayModel tTin = connect.GetHangMayBay(maHang);
+            return View(tTin);
         }
 
         // POST: HangMayBay/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(HangMayBayModel hangMayBayModel)
         {
             try
             {
-                if (connect.deleteHMB(id))
+                if (connect.deleteHMB(hangMayBayModel.MaHang))
                 {
-                    return RedirectToAction("Hang","HangMayBayController");
+
                 }
-                else
-                {
-                    return RedirectToAction("Index");
-                }
+                return RedirectToAction("Hang", "HangMayBay");
             }
             catch
             {

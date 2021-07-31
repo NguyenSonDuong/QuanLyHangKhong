@@ -177,6 +177,7 @@
     <Content Include="Views\DatVe\Create.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\HangMayBay\Delete.cshtml" />
+    <Content Include="Views\DatVe\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

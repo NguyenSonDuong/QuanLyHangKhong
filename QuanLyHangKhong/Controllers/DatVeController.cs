@@ -14,7 +14,7 @@ namespace QuanLyHangKhong.Controllers
         // GET: DatVe
         public ActionResult Ve()
         {
-            
+
             var list = connect.getAllDatVe();
             return View(list);
         }
@@ -33,12 +33,15 @@ namespace QuanLyHangKhong.Controllers
 
         // POST: DatVe/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(DatVeModel datVeModel)
         {
             try
             {
-
-                return RedirectToAction("Index");
+                if (connect.insertDV(datVeModel))
+                {
+                    return RedirectToAction("Ve", "DatVe");
+                }
+                return View();
             }
             catch
             {
@@ -47,19 +50,24 @@ namespace QuanLyHangKhong.Controllers
         }
 
         // GET: DatVe/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int maHoaDon)
         {
-            return View();
+            DatVeModel datVe = connect.GetDatVe(maHoaDon);
+            return View(datVe);
         }
 
         // POST: DatVe/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(DatVeModel datVe)
         {
             try
             {
-                
-                return RedirectToAction("Index");
+                if (connect.updateDV(datVe))
+                {
+                    return RedirectToAction("Ve","DatVe");
+                }
+                ViewBag.mess = "Sửa vé không thành công";
+                return View();
             }
             catch
             {
@@ -68,20 +76,33 @@ namespace QuanLyHangKhong.Controllers
         }
 
         // GET: DatVe/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int maHoaDon)
         {
-            return View();
+            try
+            {
+                if (connect.deleteDV(maHoaDon))
+                {
+                    return RedirectToAction("Ve", "DatVe");
+                }
+                return RedirectToAction("Ve", "DatVe");
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // POST: DatVe/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(DatVeModel datVe)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                if (connect.deleteDV(datVe.MaHD))
+                {
+                    return RedirectToAction("Ve", "DatVe");
+                }
+                return RedirectToAction("Ve", "DatVe");
             }
             catch
             {

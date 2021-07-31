@@ -60,7 +60,7 @@ namespace QuanLyHangKhong.DAL
         {
             HangMayBayModel hangMayBay = null;
             Connect();
-            String sql = $"SELECT * FROM hangmaybay WHERE maHang = '{maHang}' ";
+            String sql = $"SELECT * FROM hangmaybay WHERE maHang = {maHang} ";
             SqlCommand cmm = new SqlCommand(sql, cnn);
             SqlDataReader reader = cmm.ExecuteReader();
             while (reader.Read())
@@ -77,7 +77,7 @@ namespace QuanLyHangKhong.DAL
                 $"diachi = '{ hangMB.DiaChi }', " +
                 $"thoigianthanhlap = '{hangMB.ThoiGianThanhLap}', " +
                 $"email = '{hangMB.Email.Trim()}' " +
-                $"WHERE maHang = '{hangMB.MaHang}'";
+                $"WHERE maHang = {hangMB.MaHang}";
             SqlCommand cmm = new SqlCommand(sql, cnn);
             try
             {
@@ -111,7 +111,7 @@ namespace QuanLyHangKhong.DAL
         public Boolean deleteHMB(int maHang)
         {
             Connect();
-            string sql = $"DELETE FROM hangmaybay WHERE maHang = '{ maHang }'";
+            string sql = $"DELETE FROM hangmaybay WHERE maHang = { maHang }";
             SqlCommand cmm = new SqlCommand(sql, cnn);
             try
             {
@@ -119,7 +119,7 @@ namespace QuanLyHangKhong.DAL
                 cnn.Close();
                 return true;
             }
-            catch (Exception)
+            catch (Exception EX)
             {
                 return false;
             }
@@ -128,7 +128,7 @@ namespace QuanLyHangKhong.DAL
         {
             DatVeModel datVe = null;
             Connect();
-            String sql =$"SELECT * FROM datvehoadon WHERE maHoaDon = '{ maHoaDon }'";
+            String sql =$"SELECT * FROM datvehoadon WHERE maHoaDon = { maHoaDon }";
             SqlCommand cmm = new SqlCommand(sql, cnn);
             SqlDataReader reader = cmm.ExecuteReader();
             while (reader.Read())
@@ -141,8 +141,8 @@ namespace QuanLyHangKhong.DAL
         public Boolean updateDV(DatVeModel hdDatVe)
         {
             Connect();
-            string sql = $"UPDATE datvehoadon SET maVe = '{ hdDatVe.MaVe}', tenkhachhang = '{ hdDatVe.TenKH }'," +
-                $" mahochieu = '{ hdDatVe.MaHoChieu}', sodienthoai = '{ hdDatVe.Sdt }' WHERE maHoaDon = '{hdDatVe.MaHD}'";
+            string sql = $"UPDATE datvehoadon SET maVe = { hdDatVe.MaVe}, tenkhachhang = '{ hdDatVe.TenKH.Trim() }'," +
+                $" mahochieu = '{ hdDatVe.MaHoChieu.Trim()}', sodienthoai = '{ hdDatVe.Sdt.Trim() }' WHERE maHoaDon = {hdDatVe.MaHD}";
             SqlCommand cmm = new SqlCommand(sql, cnn);
             try
             {
@@ -160,7 +160,7 @@ namespace QuanLyHangKhong.DAL
             Connect();
             //int id = GetALLDV()[GetALLDV().Count - 1].ID + 1;
             string sql = $"INSERT INTO datvehoadon (maVe, tenkhachhang, mahochieu, sodienthoai) " +
-                $"VALUES ('{hdDatVe.MaVe }', '{ hdDatVe.TenKH} ', '{hdDatVe.MaHoChieu }', '{hdDatVe.Sdt}')";
+                $"VALUES ({hdDatVe.MaVe }, '{ hdDatVe.TenKH} ', '{hdDatVe.MaHoChieu }', '{hdDatVe.Sdt}')";
             Connect();
             SqlCommand cmm = new SqlCommand(sql, cnn);
             try
@@ -177,7 +177,7 @@ namespace QuanLyHangKhong.DAL
         public Boolean deleteDV(int maHD)
         {
             Connect();
-            string sql = $"DELETE datvehoadon DatVe WHERE maHoaDon = '{maHD}'";
+            string sql = $"DELETE datvehoadon WHERE maHoaDon = {maHD}";
             SqlCommand cmm = new SqlCommand(sql, cnn);
             try
             {
@@ -194,7 +194,7 @@ namespace QuanLyHangKhong.DAL
         {
             ThongTinVeModel hangmaybay = null;
             Connect();
-            string sql = $"select * from thongTinVe where maVe = '{maVe}'";
+            string sql = $"select * from thongTinVe where maVe = {maVe}";
             SqlCommand cmm = new SqlCommand(sql, cnn);
             SqlDataReader reader = cmm.ExecuteReader();
             while (reader.Read())
@@ -210,7 +210,7 @@ namespace QuanLyHangKhong.DAL
             string sql = $"UPDATE thongTinVe SET loaive = '{thongTinVe.LoaiVe}', " +
                 $"giave = '{thongTinVe.GiaVe}', ngaydi = '{thongTinVe.NgayDi}', " +
                 $"noidi = '{thongTinVe.NoiDi}', noiden = '{thongTinVe.NoiDen}', thoigianbay = '{thongTinVe.ThoiGianBay}', " +
-                $"maHang = '{thongTinVe.MaHang}' WHERE maVe = '{thongTinVe.MaVe}'";
+                $"maHang = {thongTinVe.MaHang} WHERE maVe = {thongTinVe.MaVe}";
             SqlCommand cmm = new SqlCommand(sql, cnn);
             try
             {
@@ -229,7 +229,7 @@ namespace QuanLyHangKhong.DAL
             //int id = GetALLTTV()[GetALLTTV().Count - 1].ID + 1;
             string sql = $"INSERT INTO thongTinVe (loaive, giave, ngaydi, noidi, noiden, thoigianbay, maHang) " +
                 $"VALUES ('{thongTinVe.LoaiVe }', '{thongTinVe.GiaVe}', '{thongTinVe.NgayDi}', '{thongTinVe.NoiDi}', " +
-                $"'{thongTinVe.NoiDen }', '{thongTinVe.ThoiGianBay }', '{thongTinVe.MaHang}')";
+                $"'{thongTinVe.NoiDen }', '{thongTinVe.ThoiGianBay }', {thongTinVe.MaHang})";
             Connect();
             SqlCommand cmm = new SqlCommand(sql, cnn);
             try
@@ -246,7 +246,7 @@ namespace QuanLyHangKhong.DAL
         public Boolean deleteThongTinVe(int maVe)
         {
             Connect();
-            string sql = $"DELETE FROM thongTinVe WHERE maVe = '{maVe}'";
+            string sql = $"DELETE FROM thongTinVe WHERE maVe = {maVe}";
             SqlCommand cmm = new SqlCommand(sql, cnn);
             try
             {
